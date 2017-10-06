@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<link rel="stylesheet" href="./font/css/font-awesome.min.css">
+
+<head>
+    <meta charset="utf-8">
+    <title>sjzj</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+        }
+        /* 强制浮动到右边 */
+        
+        .right {
+            float: right !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="ttt"></div>
+        <!-- <i-switch v-model="sw"></i-switch> -->
+        <i-button class="" @click.native="isShowDialog = true">普通按钮,点击弹出对话框</i-button>
+        <i-button class="primary">主要按钮</i-button>
+        <i-button class="warning">警告按钮</i-button>
+
+        <i-button class="xl" @click.native="isShowMenu = true">加大按钮,点击弹出菜单</i-button>
+        <i-button class="xl primary">加大的主要按钮</i-button>
+
+        <i-dialog v-model="isShowDialog" :secondary=dialogSecondary>可以放一些自定义的东西</i-dialog>
+        <!-- <i-input placeholder="请输入..."></i-input> -->
+
+        <!-- <i-select class="auto" :list="list"></i-select> -->
+
+        <!-- <h5>标题标题标题</h5> -->
+        <i-list :list="list" label="常见组件">
+
+            <!-- <template slot="item" scope="item">
+              {{ item.element }}
+            </template> -->
+            <i-list-item class="full-container">
+                <p class="auto">开关</p>
+
+                <div class="const">
+                    <i-switch v-model="sw" cla></i-switch>
+                </div>
+            </i-list-item>
+
+            <i-list-item class="full-container">
+                <p class="const">输入框：</p>
+                <i-input class="auto" placeholder="请输入..."></i-input>
+
+                <!-- <div class="const">
+                    <i-switch v-model="sw" cla></i-switch>
+                </div> -->
+            </i-list-item>
+
+            <i-list-item class="full-container">
+                <p class="const">选择框：</p>
+                <i-select class="auto" :list="list"></i-select>
+
+            </i-list-item>
+        </i-list>
+
+        <i-list :list="list" label="纯文本列表"></i-list>
+        <!-- 自动填满宽度的组件： -->
+        <!-- <div class="full-container">
+            <div class="const">
+                <i-switch v-model="sw" cla></i-switch>
+            </div>
+            <div class="auto">
+                <i-input placeholder="请输入..." style="width:100%;"></i-input>
+            </div>
+            <div class="const">
+                <i-switch v-model="sw" cla></i-switch>
+            </div>
+            <div class="const">
+                <i-switch v-model="sw" cla></i-switch>
+            </div>
+        </div> -->
+
+        <i-tabs>
+            <i-tab-pane title="b1">标签1的内容</i-tab-pane>
+            <i-tab-pane title="b2">标签2的内容标签2的内容标签2的内容标签2的内容</i-tab-pane>
+            <i-tab-pane :title="foo">{{foo}}</i-tab-pane>
+        </i-tabs>
+
+        <!-- 其实这两个是pc端样式 -->
+        <i-radio></i-radio>单选
+        <i-radio class="yes"></i-radio>单选2
+        <input type="checkbox">多选</input>
+        <input type="checkbox" class="yes">多选2</input>
+
+        <div class="icon-yes"></div>
+        <i-radio-list :list="list" label="单选列表"></i-radio-list>
+        <i-mult-list :list="list" label="多选列表"></i-mult-list>
+
+        <!-- <div style="width:50vw;position:relative;">
+            <i-button class="xl" @click.native="isShowMenu = true">{{selectText || "显示菜单" }}</i-button>
+            <i-menu :list="list" v-model="isShowMenu" @change="selectText = (arguments[0])"></i-menu>
+        </div> -->
+        <i-bottom-menu :list="list" v-model="isShowMenu"></i-bottom-menu>
+
+        <i-bottom-nav>
+            <i-tab-pane title="b1">标签1的内容</i-tab-pane>
+            <i-tab-pane title="b2">
+                <div style="height:100vh;">
+                    假设标签2的内容很长
+                </div>
+
+            </i-tab-pane>
+            <i-tab-pane :title="foo">{{foo}}</i-tab-pane>
+        </i-bottom-nav>
+    </div>
+    <script src=" /dist/build.js "></script>
+</body>
+
+</html>

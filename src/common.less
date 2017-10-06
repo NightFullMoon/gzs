@@ -1,0 +1,125 @@
+
+//  @import "./third-party/font-awesome/less/font-awesome.less";
+ 
+// 主题色
+@theme-color :#3485ff;
+// 常规情况下控件高度
+@regular-size:32px;
+
+
+body{
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    margin: 0px;
+}
+
+p{
+    margin: 0px;
+}
+// 常规文本
+.regular-text{
+    line-height: 24px;
+    font-size: @regular-size/2;  
+    color: #333;
+}
+
+//统一圆角大小
+.radius-container{
+    border-radius: 4px;
+}
+
+//通常情况下边框颜色
+@regular-border-color :#ccc;
+// 通常边框
+.regular-border{
+    border: 1px solid @regular-border-color;
+}
+// 自动宽度的组件
+.full-container{
+    display: table;
+    .const{  width: 1%;
+      
+        display: table-cell;
+        padding: 0px 8px;
+        vertical-align: middle;
+        // ↓如果是文本的话，防止文本被断开
+        word-break: keep-all;
+        &+.const{
+            // ↓形成类似flex的效果
+            padding-left: 0px;
+        }
+        &:first-child{
+            padding-left: 0px;
+        }
+        &:last-child{
+            padding-right: 0px;
+        }
+    }
+    .auto{
+        width: 100%;
+        display: table-cell;
+        // 使用float之后无法上下居中，但是取消好像又没什么影响
+        // float: left;
+        vertical-align: middle;
+        // margin得覆盖掉，否则作用在元素上时容易出问题
+        margin: 0px;
+        // margin-left: 0px;
+        // margin-right: 0px;
+    }
+}
+
+.Round(@size){
+    width: @size;
+    height: @size;
+    border-radius: 50%;
+}
+
+// 打钩的图标，先写在这
+.icon-yes{
+    width: 8px;
+    height: 16px;
+    display: block;
+    border: 2px solid @theme-color;
+    border-top: none;
+    border-left: none;
+    transform: rotateZ(45deg);
+    // position: relative;
+    // left: 6px;
+    margin: 0px 6px;
+}
+
+.clickable{
+    // cursor: pointer;
+    &:active{
+        background-color: #ccc;
+    }
+}
+.Triangle(@size,@border-color:@regular-border-color){
+    width: @size;
+    height: @size;
+    border:1px solid @border-color;
+    border-right: none;
+    border-bottom: none;
+    transform: rotateZ(45deg);
+}
+
+// 等边三角形，向下的
+// 引入了icon font，废弃了现在
+/* .Regular-triangle-bottom(@side-length,@color:@regular-border-color){
+    width: 0px;
+    height: 0px;
+    border: @side-length/2 solid transparent;
+    border-top-width: @side-length / 1.22;
+    border-top-color: @color;
+    position: relative;
+    top: @side-length/4;
+}
+.ttt{
+    .Regular-triangle-bottom(166px);
+} */
+
+// <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+/*
+  ↓ 引入icon font
+ 来自fontawesome，官网：http://fontawesome.io/
+  */
+// TODO:暂时不晓得如何引入
