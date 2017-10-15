@@ -1,11 +1,25 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var fileLoaderOption = {
+    loader: 'file-loader',
+    options: {
+        name: '[path][name].[ext]',
+        outputPath: function(path) {
+            // console.log(arguments);
+            // console.log(path);
+            // console.log("【路径↑】");
+            return path.replace(/^src/g, ".");
+        }
+    }
+};
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
+        // publicPath: '/dist/',
         filename: 'build.js'
     },
     module: {
@@ -13,8 +27,9 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: {
-                    loaders: {}
-                    // other vue-loader options go here
+                    loaders: {},
+                    extractCSS: true
+                        // other vue-loader options go here
                 }
             },
             {
@@ -23,33 +38,22 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]?[hash]'
-                }
-            }, 
+                test: /\.(woff|woff2|eot|ttf|otf|png|jpg|gif|svg)$/,
+                use: [fileLoaderOption]
+            },
             {
                 test: /\.less$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                    , options: {
-                        paths: [
-                            path.resolve(__dirname, "node_modules")
-                        ]
-                    }
-                }]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [{
+                        loader: "css-loader",
+                        options: {
+                            url: true,
+                            root: "aaaaa"
+                        }
+                    }, "less-loader"]
+                })
             },
-/*      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader'
-        ]
-      }*/
         ]
     },
     resolve: {
@@ -64,7 +68,10 @@ module.exports = {
     performance: {
         hints: false
     },
-    devtool: '#eval-source-map'
+    devtool: '#eval-source-map',
+    plugins: [
+        new ExtractTextPlugin("gzs.min.css"),
+    ]
 }
 
 if (process.env.NODE_ENV === 'production') {
