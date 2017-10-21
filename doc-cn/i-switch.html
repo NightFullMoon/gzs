@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../dist/gzs.min.css">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 8px;
+        }
+        
+        code,
+        .label {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            color: #666;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            border-radius: 4px;
+        }
+        
+        .label {
+            word-break: keep-all;
+        }
+        
+        code {
+            display: block;
+            margin: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <h2>开关 / Switch</h2>
+
+        <h3>普通尺寸的开关</h3>
+        <i-switch v-model="sw"></i-switch>
+
+        <code>
+            &lt;i-switch v-model="sw" cla&gt; &lt;/i-switch&gt;
+        </code>
+
+        <p class="desc">可以通过<span class="label">v-model</span>属性来双向绑定一个变量</p>
+
+    </div>
+    <script src="../dist/build.js "></script>
+</body>
+
+</html>

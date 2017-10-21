@@ -12,6 +12,7 @@ new Vue({
         list: [1, 2, 3, { aaa: 1 }],
         isShowMenu: false,
         isShowDialog: false,
+        inputText: "",
         dialogSecondary: {
             label: "取消",
             // class: ["primary"],

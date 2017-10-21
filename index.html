@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- <link rel="stylesheet" href="./font/css/font-awesome.min.css"> -->
-<link rel="stylesheet" href="./dist/gzs.css">
+<link rel="stylesheet" href="./dist/gzs.min.css">
 
 <head>
     <meta charset="utf-8">
@@ -29,6 +29,8 @@
 
         <div class="ttt"></div>
         <!-- <i-switch v-model="sw"></i-switch> -->
+        <h4>按钮 / Button <a href="./doc-cn/i-button.html" class="right">查看文档&gt;</a></h4>
+
         <i-button class="" @click.native="isShowDialog = true">普通按钮,点击弹出对话框</i-button>
         <i-button class="primary">主要按钮</i-button>
         <i-button class="warning">警告按钮</i-button>
@@ -42,6 +44,17 @@
         <!-- <i-select class="auto" :list="list"></i-select> -->
 
         <!-- <h5>标题标题标题</h5> -->
+        <h4>开关 / Switch<a href="./doc-cn/i-switch.html" class="right">查看文档&gt;</a></h4>
+
+        <i-switch v-model="sw" cla></i-switch>
+
+        <h4>输入框 / Input
+            <!-- <a href="./doc-cn/i-input.html" class="right">查看文档&gt;</a> -->
+        </h4>
+        <i-input placeholder="请输入..." class="xl" v-model="inputText"></i-input>
+        <p>输入框中的文本：{{inputText}}</p>
+
+
         <i-list :list="list" label="常见组件">
 
             <!-- <template slot="item" scope="item">

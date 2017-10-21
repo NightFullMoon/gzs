@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../dist/gzs.min.css">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 8px;
+        }
+        
+        code,
+        .label {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            color: #666;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            border-radius: 4px;
+        }
+        
+        .label {
+            word-break: keep-all;
+        }
+        
+        code {
+            display: block;
+            margin: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <h2>按钮</h2>
+
+        <h3>普通尺寸的按钮</h3>
+        <i-button>默认按钮</i-button>
+        <i-button class="primary">主要按钮</i-button>
+        <i-button class="warning">警告按钮</i-button>
+
+        <code>
+            &lt;i-button&gt;普通按钮 &lt;/i-button&gt;
+            <br> &lt;i-button class="primary "&gt;主要按钮 &lt;/i-button&gt;
+            <br> &lt;i-button class="warning "&gt;警告按钮 &lt;/i-button&gt;
+        </code>
+
+        <p class="desc">按钮可以直接使用，还可以添加class：<span class="label">primary</span>、<span class="label">warning</span>使其分别成为<span class="label">主要</span>和<span class="label">警告</span>按钮</p>
+
+        <h3>不带圆角</h3>
+        <i-button class="radius">默认按钮</i-button>
+        <i-button class="radius primary ">主要按钮</i-button>
+        <i-button class="radius warning ">警告按钮</i-button>
+        <code>
+                &lt;i-button class="radius"&gt;默认按钮 &lt;/i-button&gt;
+        </code>
+
+        <p class="desc">如果你需要圆角矩形，而不是椭圆的按钮，可以通过添加class<span class="label">radius</span>来实现</p>
+
+        <h3>加大宽度</h3>
+        <i-button class="xl ">加大按钮</i-button>
+        <i-button class="xl primary">加大的主要按钮</i-button>
+        <i-button class="xl warning">警告按钮</i-button>
+        <code>
+                &lt;i-button class="xl "&gt;加大按钮 &lt;/i-button&gt;
+        </code>
+
+        <p class="desc">
+            可以通过添加class<span class="label">xl</span>来使其成为加大号的按钮,加大号的按钮会占据整行的宽度，
+        </p>
+
+
+        <i-button class="xl radius">加大按钮</i-button>
+        <i-button class="xl primary radius">加大的主要按钮</i-button>
+        <i-button class="xl warning radius">警告按钮</i-button>
+
+        <code>
+                &lt;i-button class="xl radius"&gt;加大按钮 &lt;/i-button&gt;
+        </code>
+
+        <p class="desc">是的，<span class="label">圆角程度</span>、<span class="label">按钮类型</span>、<span class="label">按钮尺寸</span>这三个选项是独立的，可以任意排列组合,例如你也可以在普通的加大宽度按钮上加上class<span class="label">radius</span>使其称为一个“圆角矩形的加大按钮”</p>
+
+    </div>
+    <script src="../dist/build.js "></script>
+</body>
+
+</html>
