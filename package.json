@@ -6,7 +6,8 @@
     "private": true,
     "scripts": {
         "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-        "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+        "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+        "gzs": "webpack --config webpack.gzs.js"
     },
     "dependencies": {
         "jquery": "^3.2.1",
@@ -28,6 +29,7 @@
         "vue-style-loader": "^3.0.3",
         "vue-template-compiler": "^2.5.2",
         "webpack": "^3.6.0",
-        "webpack-dev-server": "^2.4.5"
+        "webpack-dev-server": "^2.4.5",
+        "webpack-merge": "^4.1.0"
     }
 }

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 
-import gzs from './gzs.js'
+import gzs from '../dist/gzs.js'
 
+console.log(gzs);
+Vue.use(gzs);
 
 new Vue({
     el: '#app',

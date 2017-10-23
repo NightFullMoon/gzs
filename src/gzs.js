@@ -43,8 +43,20 @@ let gzs = {
     iBottomNav
 }
 
-for (var i in gzs) {
-    Vue.component(i, gzs[i]);
+// Vue.use 需要，
+// 详情参考https://cn.vuejs.org/v2/api/#Vue-use
+// 以及https://cn.vuejs.org/v2/guide/plugins.html
+const install = function (Vue, opts = {}) {
+    for (var i in gzs) {
+        Vue.component(i, gzs[i]);
+    }
+};
+
+// 直接引用脚本的情况,要是Vue存在就直接注册给Vue
+// auto install
+if (typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
 }
 
-export { gzs }
+
+export default install
