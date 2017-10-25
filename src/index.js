@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import gzs from '../dist/gzs.js'
+import gzs from './gzs.js'
 
 console.log(gzs);
 Vue.use(gzs);
