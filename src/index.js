@@ -1,13 +1,14 @@
 import Vue from 'vue'
 
 import gzs from './gzs.js'
+import testC from "./test-c.vue"
 
 console.log(gzs);
 Vue.use(gzs);
 
 new Vue({
     el: '#app',
-
+    components: { testC },
     data: {
         sw: true,
         foo: "aaa",

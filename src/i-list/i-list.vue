@@ -5,8 +5,12 @@
             <!-- <li>
                     <slot name="item" :element="item" :index="index">{{item}}</slot>
                 </li> -->
-            <slot>
-                <i-list-item v-for="(item ,index) in list" :key="index">{{item}}</i-list-item>
+
+                
+            <slot v-for="(item ,index) in list" name="item" :item="item" :index="index">
+                <li class="list-item" >
+                    {{item}}
+                </li>
             </slot>
         </ul>
     </div>
@@ -28,53 +32,54 @@
         </i-list>
 
 */
-import iListItem from './i-list-item.vue'
+import iListItem from "./i-list-item.vue";
 export default {
-    name: "i-list",
-    // props: ["list","title"],
-    props: {
-        list: {
-            type: Array,
-            default:function(){return[];}
-        },
-        label: {
-            type: String,
-            default: ""
-        }
+  name: "i-list",
+  // props: ["list","title"],
+  props: {
+    list: {
+      type: Array,
+      default: function() {
+        return [];
+      }
     },
-    components: { iListItem }
-
-}
+    label: {
+      type: String,
+      default: ""
+    }
+  },
+  components: { iListItem }
+};
 </script>
 
 <style lang="less">
 // @import (reference) "common.less";
 //TODO:先把全局的导进来，以后再做处理
 @import (reference) "../common.less";
-.list-title{
-    margin: 8px;
-    font-size: 14px;
-    line-height: 16px;
+.list-title {
+  margin: 8px;
+  font-size: 14px;
+  line-height: 16px;
 }
 .list {
-    .regular-border();
-    .radius-container(); // width: 100%;
-    margin: 8px;
-    list-style: none;
-    padding: 0px;
-    background-color: white;
-    box-sizing: border-box;
+  .regular-border();
+  .radius-container(); // width: 100%;
+  margin: 8px;
+  list-style: none;
+  padding: 0px;
+  background-color: white;
+  box-sizing: border-box;
 
-    li {
-        .regular-text();
-        .clickable();
-        padding: 8px;
+  li {
+    .regular-text();
+    .clickable();
+    padding: 8px;
 
-        border-bottom: 1px solid @regular-border-color; // box-sizing: border-box;
-        &:last-child {
-            border-bottom: none;
-        }
+    border-bottom: 1px solid @regular-border-color; // box-sizing: border-box;
+    &:last-child {
+      border-bottom: none;
     }
+  }
 }
 </style>
 
