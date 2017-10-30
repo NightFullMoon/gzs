@@ -24,6 +24,7 @@ import iBottomMenu from './i-bottom-menu.vue'
 import iDialog from './i-dialog.vue'
 
 import iBottomNav from './i-bottom-nav.vue'
+import iNotice from './i-notice.vue'
 
 let gzs = {
     iButton,
@@ -40,13 +41,14 @@ let gzs = {
     iSelect,
     iBottomMenu,
     iDialog,
-    iBottomNav
+    iBottomNav,
+    iNotice
 }
 
 // Vue.use 需要，
 // 详情参考https://cn.vuejs.org/v2/api/#Vue-use
 // 以及https://cn.vuejs.org/v2/guide/plugins.html
-const install = function (Vue, opts = {}) {
+const install = function(Vue, opts = {}) {
     for (var i in gzs) {
         Vue.component(i, gzs[i]);
     }

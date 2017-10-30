@@ -20,7 +20,9 @@ new Vue({
             // class: ["primary"],
             callback: function() {}
         },
-        selectText: ""
+        selectText: "",
+
+        showNotice: false
     },
     watch: {
         sw: function() {

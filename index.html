@@ -29,9 +29,13 @@
 
         <div class="ttt"></div>
         <!-- <i-switch v-model="sw"></i-switch> -->
+
+        <i-notice :show.sync="showNotice"></i-notice>
+
         <h4>按钮 / Button <a href="./doc-cn/i-button.html" class="right">查看文档&gt;</a></h4>
 
         <i-button class="" @click.native="isShowDialog = true">普通按钮,点击弹出对话框</i-button>
+        <i-button class="" @click.native="showNotice = !showNotice">通知</i-button>
         <i-button class="primary">主要按钮</i-button>
         <i-button class="warning">警告按钮</i-button>
 
@@ -133,6 +137,7 @@
             </i-tab-pane>
             <i-tab-pane :title="foo">{{foo}}</i-tab-pane>
         </i-bottom-nav>
+
     </div>
     <script src="./dist/build.js "></script>
 </body>

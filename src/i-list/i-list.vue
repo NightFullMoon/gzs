@@ -31,7 +31,6 @@
 import iListItem from './i-list-item.vue'
 export default {
     name: "i-list",
-    // props: ["list","title"],
     props: {
         list: {
             type: Array,
@@ -43,7 +42,6 @@ export default {
         }
     },
     components: { iListItem }
-
 }
 </script>
 
