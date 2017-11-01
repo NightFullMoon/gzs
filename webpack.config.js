@@ -2,6 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const IS_BUILD = process.env.NODE_ENV === 'production';
+
 var fileLoaderOption = {
     loader: 'file-loader',
     options: {
@@ -28,11 +30,10 @@ module.exports = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {},
-                    extractCSS: true
+                    extractCSS: IS_BUILD
                         // other vue-loader options go here
                 }
-            },
-            {
+            }, {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
@@ -40,20 +41,16 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf|png|jpg|gif|svg)$/,
                 use: [fileLoaderOption]
-            },
-            {
+            }, {
                 test: /\.less$/,
-                use: ExtractTextPlugin.extract({
+                use: !!!IS_BUILD ? ['style-loader', 'css-loader', 'less-loader'] : ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: [{
-                        loader: "css-loader",
-                        options: {
-                            url: true,
-                            root: "aaaaa"
-                        }
-                    }, "less-loader"]
+                    use: ["css-loader", "less-loader"]
                 })
-            },
+            }, {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
         ]
     },
     resolve: {
@@ -91,6 +88,15 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        })
+        }),
+
     ])
 }
+
+/* 
+if (module.hot) {
+    module.hot.accept('./dist/gzs.min.css', function() {
+        console.log('Accepting the updated printMe module!');
+        // printMe();
+    })
+} */

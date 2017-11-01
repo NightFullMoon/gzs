@@ -26,7 +26,8 @@ export default {
 
 <style lang="less">
 @import (reference) "common.less";
-input[type="text"] {
+input[type="text"],
+input[type="password"]{
     height: @regular-size;
     .radius-container();
     border: 1px solid @theme-color;
