@@ -24,7 +24,7 @@ import iBottomMenu from './i-bottom-menu.vue'
 import iDialog from './i-dialog.vue'
 
 import iBottomNav from './i-bottom-nav.vue'
-import iNotice from './i-notice.vue'
+import iNotice from './i-notice/'
 
 let gzs = {
     iButton,
