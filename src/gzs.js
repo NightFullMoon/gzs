@@ -24,7 +24,7 @@ import iBottomMenu from './i-bottom-menu.vue'
 import iDialog from './i-dialog.vue'
 
 import iBottomNav from './i-bottom-nav.vue'
-import iNotice from './i-notice/'
+import notice from './i-notice/'
 
 let gzs = {
     iButton,
@@ -42,7 +42,7 @@ let gzs = {
     iBottomMenu,
     iDialog,
     iBottomNav,
-    iNotice
+    // iNotice
 }
 
 // Vue.use 需要，
@@ -52,6 +52,8 @@ const install = function(Vue, opts = {}) {
     for (var i in gzs) {
         Vue.component(i, gzs[i]);
     }
+
+    Vue.prototype.$notice = notice;
 };
 
 // 直接引用脚本的情况,要是Vue存在就直接注册给Vue
