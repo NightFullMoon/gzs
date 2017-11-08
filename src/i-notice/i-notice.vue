@@ -19,6 +19,16 @@
 </template>
 
 <script>
+
+/*
+  组件TODO:
+ 1、PC版样式 
+ 2、当鼠标hover到通知上时，不隐藏
+ 3、PC上的关闭按钮
+ 4、手势向左或者向右滑动移除通知
+*/
+
+
 export default {
   name: "i-notice",
   props: {
