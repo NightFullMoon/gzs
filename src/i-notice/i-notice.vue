@@ -1,6 +1,12 @@
 <template>
  <transition name="slide">
-  <div class="notice full-container" v-show="show">
+  <div class="notice full-container" v-show="show"
+    @touchstart="onTouchStart"
+     @touchmove="onMove"  
+     @touchend="onTouchEnd"
+     
+     :style="'left:'+leavePercent*100+'%'" >
+     <!-- 注：透明渐变的效果：;opacity: '+(1-leavePercent)*1.2 +';  -->
     <!-- todo：这个图标先不显示，还没想好怎么处理 -->
     <div class="const hidden">
        <img src="" alt="" class="icon">
@@ -39,7 +45,7 @@ export default {
     // 关闭的秒数，设置为0表示禁用
     closeSecond: {
       type: Number,
-      default: 5
+      default: 0
     },
 
     // 标题
@@ -56,8 +62,18 @@ export default {
   },
   data: function() {
     return {
-      timer: null
+      timer: null,
+      // 触摸开始时，触摸点所在的位置
+      startX:0,
+
+      offsetX:0,
+
     };
+  },
+  computed:{
+    leavePercent:function(){
+      return (this.offsetX/window.screen.width);
+    }
   },
   watch: {
     show: function() {
@@ -87,7 +103,36 @@ export default {
       );
     }
   },
-  methods: { }
+  methods: {
+    remove:function(){
+
+    },
+
+    //TODO: 注：这里有一点需要注意的是，在touch手动移动的时候，是没有过渡的，只有在取消、确认清除、无法清除的时候，才会具有过渡效果
+    onTouchStart:function(event){
+      console.log(event.touches[0]);
+      this.startX = event.touches[0].clientX;
+
+    }, 
+
+    onTouchEnd:function(){
+      //  this.startX = event.touches[0].clientX;
+     
+
+  if(0.5<this.leavePercent){
+    this.offsetX = 375;
+  }else{
+  this.offsetX = 0;
+  }
+    },
+
+
+    onMove:function(event){
+      // console.log("onMove");
+      var currentX =  event.touches[0].clientX;
+      this.offsetX = currentX -  this.startX; 
+    }
+   }
 };
 </script>
 <style lang="less">
