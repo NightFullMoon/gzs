@@ -115,9 +115,9 @@ export default {
 
     }, 
 
-    onTouchEnd:function(){
+    onTouchEnd:function(event){
       //  this.startX = event.touches[0].clientX;
-     
+     console.log(event);
 
   if(0.5<this.leavePercent){
     this.offsetX = 375;
