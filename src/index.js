@@ -41,7 +41,7 @@ new Vue({
     mounted: function() {
             var that = this;
 
-            this.$notice();
+            // this.$notice();
 
             setTimeout(function() {
                 that.foo = "bbb";
