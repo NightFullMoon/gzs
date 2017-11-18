@@ -21,7 +21,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
+        publicPath: IS_BUILD?"":'/dist/',
         filename: 'build.js'
     },
     module: {
