@@ -12,6 +12,35 @@ new Vue({
         sw: true,
         foo: "aaa",
         list: [1, 2, 3, { aaa: 1 }],
+
+        // 自定义渲染的列表
+        customList: [{
+            label:"测试"
+        },{
+                label: "快速开始",
+                href: "./doc-cn/quick-start.html",
+                // action: function() {}
+            }, {
+                label: "按钮 / Button ",
+                href: "./doc-cn/i-button.html",
+                // action: function() {}
+            }, {
+                label: "开关 / Switch",
+                href: "./doc-cn/i-switch.html",
+                icon: "fa-toggle-on"
+            },
+            // item完整的属性：
+            {
+                label: "测试的item",
+                action: function() {
+                    alert("可以自定义回调函数");
+                },
+                href: "###",
+                icon: "fa-toggle-on",
+                disabled: true
+            }
+        ],
+
         isShowMenu: false,
         isShowDialog: false,
         inputText: "",
@@ -48,5 +77,4 @@ new Vue({
             }, 3000);
         }
         // render: h => h(App)
-
 });

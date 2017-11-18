@@ -101,7 +101,7 @@ p{
 }
 
 .clickable{
-    // cursor: pointer;
+    cursor: pointer;
     &:active{
         background-color: #ccc;
     }
@@ -170,4 +170,14 @@ h6{
 }
 a{
     color: @theme-color;
+}
+
+.All-state(@rule){
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited{
+        @rule();
+    }
 }

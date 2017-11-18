@@ -3,6 +3,7 @@ node_modules/
 dist/
 npm-debug.log
 yarn-error.log
+index-3.html
 
 # Editor directories and files
 .idea
