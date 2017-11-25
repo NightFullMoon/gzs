@@ -1,18 +1,19 @@
 <template>
-<div class="i-auto-complete">
-  <input type="text" v-model="mValue">
-<i-list :list="mSuggest" v-show=" 0<mValue.length" @click-item="mValue= arguments[0];mShowList=false"></i-list>
-</div>
+  <div class="i-auto-complete">
+    <input type="text" v-model="mValue" @focus="mShowList=true" @blur="mShowList=false">
+    <i-list :list="mSuggest" v-show="mShowList" @click-item="mValue= arguments[0];"></i-list>
+  </div>
 </template>
 
 <script>
 // 这个组件是一个高阶的组件，顺带演示了如何组合两个已有的组件
 /* 
-    1，先开发出匹配本地数据的，
-    // 2、然后是匹配function的，
-    // 最后是匹配远程数据（异步）的
- */
+  √ 1，先开发出匹配本地数据的
+  √ 2、然后是匹配function的
+  最后是匹配远程数据（异步）的
+*/
 import iList from "./i-list/i-list.vue";
+import utils from "./utils.js";
 
 export default {
   name: "i-auto-complete",
@@ -21,7 +22,7 @@ export default {
     value: [String, Number],
     // 本地匹配的值，
     data: {
-      type: Array,
+      type: [Array, Function],
       default: () => []
     }
     // 给出的建议
@@ -37,6 +38,7 @@ export default {
     return {
       mValue: "",
       mShowList: false
+      // mRemoteSuggest
       // 实际进行渲染的建议
       // _suggest: []
     };
@@ -44,7 +46,12 @@ export default {
   computed: {
     // 返回，提供建议的列表
     mSuggest: function() {
+      console.log("生成建议");
       var keyword = this.mValue;
+
+      if (utils.isFunction(this.data)) {
+        return this.data(keyword);
+      }
 
       if (!keyword) {
         return [];
@@ -60,17 +67,17 @@ export default {
       this.mValue = this.value;
     },
     mValue: function() {
-      this.mShowList = false;
+      // this.mShowList = false;
       this.$emit("input", this.mValue);
+      console.log("mValue 改变");
     }
   },
-  components: { iList }
+  components: {
+    iList
+  }
 };
 </script>
 
-<style>
-
-</style>
 <style lang="less">
 .i-auto-complete {
   input,
@@ -81,4 +88,3 @@ export default {
   }
 }
 </style>
-

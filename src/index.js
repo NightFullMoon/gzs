@@ -68,6 +68,10 @@ new Vue({
         print(log) {
             // con'.log()
             console.log(log);
+        },
+        onAutoComplete: function (keyword) {
+            console.log(keyword);
+            return ['aaa', 'bbb'];
         }
     },
     mounted: function () {
