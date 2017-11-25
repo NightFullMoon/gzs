@@ -66,7 +66,7 @@ export default {
         // return;
       }
 
-      this.$emit("click-item", item,index);
+      this.$emit("click-item", item, index);
     }
   }
 };
@@ -94,6 +94,8 @@ export default {
     }
 
     // .clickable();
+    width: 100%;
+    margin: 0px;
     padding: 0px;
     border-bottom: 1px solid @regular-border-color;
     &:last-child {
