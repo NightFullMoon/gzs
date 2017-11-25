@@ -26,6 +26,8 @@ import iDialog from './i-dialog.vue'
 import iBottomNav from './i-bottom-nav.vue'
 import notice from './i-notice/'
 
+import iAutoComplete from "./i-auto-complete.vue"
+
 let gzs = {
     iButton,
     iSwitch,
@@ -43,12 +45,13 @@ let gzs = {
     iDialog,
     iBottomNav,
     // iNotice
+    iAutoComplete
 }
 
 // Vue.use 需要，
 // 详情参考https://cn.vuejs.org/v2/api/#Vue-use
 // 以及https://cn.vuejs.org/v2/guide/plugins.html
-const install = function(Vue, opts = {}) {
+const install = function (Vue, opts = {}) {
     for (var i in gzs) {
         Vue.component(i, gzs[i]);
     }

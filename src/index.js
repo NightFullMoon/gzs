@@ -11,12 +11,14 @@ new Vue({
     data: {
         sw: true,
         foo: "aaa",
-        list: [1, 2, 3, { aaa: 1 }],
+        list: [1, 2, 3, {
+            aaa: 1
+        }],
 
         // 自定义渲染的列表
         customList: [{
-            label:"测试"
-        },{
+                label: "测试"
+            }, {
                 label: "快速开始",
                 href: "./doc-cn/quick-start.html",
                 // action: function() {}
@@ -32,7 +34,7 @@ new Vue({
             // item完整的属性：
             {
                 label: "测试的item",
-                action: function() {
+                action: function () {
                     alert("可以自定义回调函数");
                 },
                 href: "###",
@@ -47,17 +49,18 @@ new Vue({
         dialogSecondary: {
             label: "取消",
             // class: ["primary"],
-            callback: function() {}
+            callback: function () {}
         },
         selectText: "",
 
-        showNotice: false
+        showNotice: false,
+        text2: ""
     },
     watch: {
-        sw: function() {
+        sw: function () {
             console.log("sw change!:" + this.sw);
         },
-        isShowMenu: function() {
+        isShowMenu: function () {
             console.log("isShowMenu change!:" + this.isShowMenu);
         }
     },
@@ -67,14 +70,14 @@ new Vue({
             console.log(log);
         }
     },
-    mounted: function() {
-            var that = this;
+    mounted: function () {
+        var that = this;
 
-            // this.$notice();
+        // this.$notice();
 
-            setTimeout(function() {
-                that.foo = "bbb";
-            }, 3000);
-        }
-        // render: h => h(App)
+        setTimeout(function () {
+            that.foo = "bbb";
+        }, 3000);
+    }
+    // render: h => h(App)
 });
