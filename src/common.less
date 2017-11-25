@@ -100,12 +100,19 @@ p{
     margin: 0px 6px;
 }
 
+// 可点击的项目
 .clickable{
     cursor: pointer;
     &:active{
         background-color: #ccc;
     }
 }
+// 悬浮状态组件的阴影
+.float-shadow
+{
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
+}
+
 .Triangle(@size,@border-color:@regular-border-color){
     width: @size;
     height: @size;

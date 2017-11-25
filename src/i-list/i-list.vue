@@ -98,6 +98,7 @@ export default {
     margin: 0px;
     padding: 0px;
     border-bottom: 1px solid @regular-border-color;
+    box-sizing: border-box;
     &:last-child {
       border-bottom: none;
     }

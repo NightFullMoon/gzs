@@ -79,12 +79,32 @@ export default {
 </script>
 
 <style lang="less">
+@import (reference) "common.less";
 .i-auto-complete {
+  position: relative;
+
   input,
   /* todo:这里暴露了css类名不统一的问题 */ .list {
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  .list {
+    .float-shadow;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    z-index: 999;
+  }
+
+  .transparent-mask {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 998;
   }
 }
 </style>
