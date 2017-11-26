@@ -8,7 +8,7 @@
       <slot>
         <i-list-item v-for="(item ,index) in list" :key="index" class="no-padding-item">
           <!-- ,clickable:(item.href || item.action) -->
-          <a :href="item.href" @click="onItemClick($event,item,index)" class="clickable" :class="{disabled:item.disabled}">
+          <a :href="item.href" @mousedown="onItemClick($event,item,index)" class="clickable" :class="{disabled:item.disabled}">
             <i v-if="item.icon" class="fa" :class="item.icon" aria-hidden="true"></i> {{item.label || item}}</a>
         </i-list-item>
       </slot>

@@ -1,6 +1,6 @@
 <template>
   <div class="i-auto-complete">
-    <input type="text" v-model="mValue" @focus="mShowList=true" @blur="mShowList=false">
+<input type="text" v-model="mValue" @focus="isFocus=true" @blur="isFocus=false">
     <i-list :list="mSuggest" v-show="mShowList" @click-item="mValue= arguments[0];"></i-list>
   </div>
 </template>
@@ -37,7 +37,8 @@ export default {
   data: function() {
     return {
       mValue: "",
-      mShowList: false
+      // mShowList: false,
+      isFocus: false
       // mRemoteSuggest
       // 实际进行渲染的建议
       // _suggest: []
@@ -46,7 +47,7 @@ export default {
   computed: {
     // 返回，提供建议的列表
     mSuggest: function() {
-      console.log("生成建议");
+      // console.log("生成建议");
       var keyword = this.mValue;
 
       if (utils.isFunction(this.data)) {
@@ -60,6 +61,9 @@ export default {
         // console.log(element);
         return -1 < String(element).indexOf(keyword);
       });
+    },
+    mShowList: function() {
+      return this.isFocus && 0 < this.mValue.length;
     }
   },
   watch: {
@@ -69,7 +73,11 @@ export default {
     mValue: function() {
       // this.mShowList = false;
       this.$emit("input", this.mValue);
-      console.log("mValue 改变");
+
+      // if (this.isFocus && 0 < this.mValue.length) {
+      //   this.mShowList = true;
+      // }
+      // console.log("mValue 改变");
     }
   },
   components: {
