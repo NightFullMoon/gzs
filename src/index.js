@@ -71,7 +71,14 @@ new Vue({
         },
         onAutoComplete: function (keyword) {
             console.log(keyword);
-            return ['aaa', 'bbb'];
+            // return ['aaa', 'bbb'];
+
+            return new Promise(function (resolve) {
+                console.log("new promise")
+                setTimeout(function () {
+                    resolve([keyword + 1, keyword + 2, keyword + 3]);
+                }, 3000);
+            })
         }
     },
     mounted: function () {
