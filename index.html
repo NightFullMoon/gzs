@@ -112,6 +112,7 @@
 
         <i-list :list="list" label="自定义列表">
             <li slot="item" slot-scope="props">
+                {{props}}
                 <h1>{{props.item}}</h1>
             </li>
         </i-list>
