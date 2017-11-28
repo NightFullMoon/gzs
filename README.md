@@ -2,11 +2,9 @@
 
 > A Vue.js project/一个基于 Vue.js 的项目
 
-http://meishenmeyong.com/gzs/
-
 ## Build Setup/使用说明
 
-[查看中文demo](http://meishenmeyong.com/gzs/)
+[中文文档&&demo](http://meishenmeyong.com/gzs-doc/)
 
 ``` bash
 # install dependencies / 安装依赖的项目

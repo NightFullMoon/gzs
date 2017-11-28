@@ -30,14 +30,6 @@
         </h1>
         <h2>基于Vue.js的前端UI组件库</h2>
 
-        <test-c>
-            <!-- <p slot="header">111</p> -->
-            <template slot-scope="props" slot="item">
-                <!-- <span>hello from parent</span> -->
-                <h1>{{ props.text }}</h1>
-            </template>
-        </test-c>
-
         <div class="ttt"></div>
         <!-- <i-switch v-model="sw"></i-switch> -->
 
@@ -108,13 +100,15 @@
         <h4>列表组件 / List
             <a href="./doc-cn/i-list.html" class="right">查看文档&gt;</a>
         </h4>
-        <i-list :list="list" label="纯文本列表"></i-list>
+        <i-list :list="list" label="纯文本列表" @click-item="print"></i-list>
 
-        <i-list :list="list" label="自定义列表">
-            <li slot="item" slot-scope="props">
-                {{props}}
-                <h1>{{props.item}}</h1>
-            </li>
+        <i-list :list="list" label="自定义列表" @click-item="print">
+            <!-- <li> -->
+            <!-- <i-list-item> -->
+            <a slot="item" slot-scope="props">
+                <strong>{{props.index}}.</strong>{{ props.item.aaa || props.item }}</a>
+            <!-- </i-list-item> -->
+            <!-- </li> -->
         </i-list>
         <!-- 自动填满宽度的组件： -->
         <!-- <div class="full-container">
@@ -145,8 +139,8 @@
         <input type="checkbox" class="yes">多选2</input>
 
         <div class="icon-yes"></div>
-        <i-radio-list :list="list" label="单选列表"></i-radio-list>
-        <i-mult-list :list="list" label="多选列表"></i-mult-list>
+        <!-- <i-radio-list :list="list" label="单选列表"></i-radio-list> -->
+        <!-- <i-mult-list :list="list" label="多选列表"></i-mult-list> -->
 
         <!-- <div style="width:50vw;position:relative;">
             <i-button class="xl" @click.native="isShowMenu = true">{{selectText || "显示菜单" }}</i-button>
