@@ -9,7 +9,7 @@
 
 body{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-    margin: 0px;
+    // margin: 0px;
 }
 
 p{
@@ -26,13 +26,26 @@ p{
 .radius-container{
     border-radius: 4px;
 }
+// 隐藏
+.hidden{
+    display: none !important;
+}
+
+// 只有一行的文本，超出会被设置成省略号
+.one-line{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
 
 //通常情况下边框颜色
 @regular-border-color :#ccc;
+
 // 通常边框
 .regular-border{
     border: 1px solid @regular-border-color;
 }
+
 // 自动宽度的组件
 .full-container{
     display: table;
@@ -87,12 +100,19 @@ p{
     margin: 0px 6px;
 }
 
+// 可点击的项目
 .clickable{
-    // cursor: pointer;
+    cursor: pointer;
     &:active{
         background-color: #ccc;
     }
 }
+// 悬浮状态组件的阴影
+.float-shadow
+{
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
+}
+
 .Triangle(@size,@border-color:@regular-border-color){
     width: @size;
     height: @size;
@@ -122,4 +142,49 @@ p{
   ↓ 引入icon font
  来自fontawesome，官网：http://fontawesome.io/
   */
+
 @import "./third-party/font-awesome/less/font-awesome.less";
+
+// 基础的样式覆盖
+body{
+    // padding: 8px;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: #444;
+    margin:8px 0px;
+    line-height: 1.4em;
+}
+
+h1{
+    font-size: 32px;
+}
+
+h2{
+    font-size: 24px;
+}
+h3{
+    font-size: 20px;
+}
+h4{
+    font-size: 18px; 
+}
+h5{
+    font-size: 16px;
+}
+h6{
+    font-size: 14px;
+}
+a{
+    color: @theme-color;
+}
+
+.All-state(@rule){
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited{
+        @rule();
+    }
+}

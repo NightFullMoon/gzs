@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../dist/gzs.min.css">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 8px;
+        }
+        
+        code,
+        .label {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            color: #666;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            border-radius: 4px;
+        }
+        
+        .label {
+            word-break: keep-all;
+        }
+        
+        code {
+            display: block;
+            margin: 8px;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #f8f8f8 !important;">
+    <div id="app">
+        <h2>列表 / List</h2>
+
+        <h3>实例一、纯文本的列表</h3>
+
+        <i-list :list="list1" label="列表的标题" @click-item="onClickItem"></i-list>
+        <p>模板：</p>
+        <code>
+            &lt;i-list :list="list1" label="列表的标题"&gt; &lt;/i-list&gt;
+        </code>
+        <p>JavaScript：</p>
+        <code>
+        	list1:["item1","item2","item3"]
+        </code>
+
+
+        <p class="desc">可以将一个<span class="label">字符串数组</span>传递给<span class="label">list</span>属性来渲染一个列表。此时的列表仅仅只是一个纯文本列表，不具备任何功能</p>
+
+
+        <h3>实例二、带功能的列表</h3>
+
+        <i-list :list="list2" label="列表的标题" @click-item="onClickItem"></i-list>
+
+        <p class="desc">现在，我们依然可以通过传入一个<span class="label">对象数组</span>来渲染列表。每个对象所携带的信息，将决定它对应item的行为。例如，假设我们需要在点击某个对象时触发某个回调函数，则我们可以设置该对象的<span class="label">action</span>属性： </p>
+        <code>
+        	list2:[{
+                    label: "这个item能触发回调函数",
+                    action: function() {
+                        alert("触发了item的回调函数");
+                    }
+                }]
+        </code>
+<p class="desc">至于其他相关的字段以及对应的功能，可以参考以下表格</p>
+        <table border="1" cellspacing="0">
+            <tr>
+                <th>字段</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>label</td>
+                <td>显示在列表中的文本</td>
+            </tr>
+            <tr>
+                <td>action</td>
+                <td>点击item时候触发的回调函数</td>
+            </tr>
+            <tr>
+                <td>href</td>
+                <td>链接</td>
+            </tr>
+            <tr>
+                <td>icon</td>
+                <td>图标，具体的图标名字请参考<a href="http://fontawesome.io/icons/">Font Awesome</a></td>
+            </tr>
+            <tr>
+                <td>disabled</td>
+                <td>是否禁用，设置为true时，回调函数action和链接href都处于不可用的状态</td>
+            </tr>
+        </table>
+
+  <h3>另一种触发回调的方式</h3>
+
+<p class="desc"> 如果你想在一个函数中统一处理列表中每一项的回调，可以通过监听<span class="label">click-item</span>事件。</p>
+        <p>模板：</p>
+         <code>
+            &lt;i-list :list="list1" label="列表的标题" @click-item="onClickItem"&gt; &lt;/i-list&gt;
+        </code>
+
+        <p>JavaScript：</p>
+        <code>
+        	       
+        new Vue({
+            el: "#app",
+            data: {
+                list1: ["item1", "item2", "item3"]
+            },
+            methods:{
+            	onClickItem:function(item,index){
+            		console.log(item.label+"被点击")
+            		
+            	}
+            }
+        });
+        </code>
+<p class="desc">该事件携带两个参数，第一个参数为被点击的项本身，第二个参数为被点击的index</p>
+<p class="desc">如果某一项同时具有<span class="label">action</span>、监听<span class="label">click-item</span>事件和<span class="label">url</span>，则触发顺序依次为：<span class="label">action</span>&gt;&gt;<span class="label">click-item</span>事件&gt;&gt;<span class="label">url</span></p>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.3/vue.min.js"></script>
+    <script type="text/javascript" src="../dist/gzs.js"></script>
+    <script type="text/javascript">
+        console.log(window.gzs);
+        Vue.use(gzs);
+        new Vue({
+            el: "#app",
+            data: {
+                list1: ["item1", "item2", "item3"],
+                list2: [{
+                    	label: "这依然是一个纯文本的item"
+                	}, {
+                    label: "这是一个带图标的item",
+                    icon: "fa-toggle-on",
+                }, {
+                    label: "这是一个带链接的item",
+                    href: "/",
+                }, {
+                    label: "这个item能触发回调函数",
+                    action: function() {
+                        alert("触发了item的回调函数");
+                    }
+                }, {
+                    label: "这是一个被禁用的item",
+                    action: function() {
+                        alert("可以自定义回调函数");
+                    },
+                    href: "/",
+                    icon: "fa-toggle-on",
+                    disabled: true
+                }]
+            },
+            methods:{
+            	onClickItem:function(item,index){
+            		console.log(item.label+"被点击")
+            		// alert(index);
+            	}
+            }
+        });
+    </script>
+    <!-- <script src="../dist/build.js "></script> -->
+</body>
+
+</html>

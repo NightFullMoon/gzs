@@ -10,5 +10,9 @@ export default {
 
 <style lang="less">
 // @import "../common.less";
+li.list-item{
+  padding: 8px;
+}
+
 </style>
 

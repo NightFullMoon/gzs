@@ -15,7 +15,7 @@
             background-color: #f8f8f8;
         }
         /* 强制浮动到右边 */
-        
+
         .right {
             float: right !important;
         }
@@ -24,7 +24,10 @@
 
 <body>
     <div id="app">
-        <h1>GZS <span style="font-size: 0.5em;">v0.1</span><a href="./doc-cn/quick-start.html" class="right">快速开始&gt;</a></h1>
+        <h1>GZS
+            <span style="font-size: 0.5em;">v0.1</span>
+            <a href="./doc-cn/quick-start.html" class="right">快速开始&gt;</a>
+        </h1>
         <h2>基于Vue.js的前端UI组件库</h2>
 
         <test-c>
@@ -37,9 +40,17 @@
 
         <div class="ttt"></div>
         <!-- <i-switch v-model="sw"></i-switch> -->
-        <h4>按钮 / Button <a href="./doc-cn/i-button.html" class="right">查看文档&gt;</a></h4>
+
+        <!-- <i-notice :show.sync="showNotice"></i-notice> -->
+        {{text2}}
+        <!-- <i-auto-complete :data="onAutoComplete" v-model="text2"></i-auto-complete> -->
+        <i-auto-complete :data="['item1','item2']" v-model="text2"></i-auto-complete>
+        <h4>按钮 / Button
+            <a href="./doc-cn/i-button.html" class="right">查看文档&gt;</a>
+        </h4>
 
         <i-button class="" @click.native="isShowDialog = true">普通按钮,点击弹出对话框</i-button>
+        <i-button class="" @click.native="$notice('这是一条通知')">通知</i-button>
         <i-button class="primary">主要按钮</i-button>
         <i-button class="warning">警告按钮</i-button>
 
@@ -52,7 +63,9 @@
         <!-- <i-select class="auto" :list="list"></i-select> -->
 
         <!-- <h5>标题标题标题</h5> -->
-        <h4>开关 / Switch<a href="./doc-cn/i-switch.html" class="right">查看文档&gt;</a></h4>
+        <h4>开关 / Switch
+            <a href="./doc-cn/i-switch.html" class="right">查看文档&gt;</a>
+        </h4>
 
         <i-switch v-model="sw" cla></i-switch>
 
@@ -63,7 +76,7 @@
         <p>输入框中的文本：{{inputText}}</p>
 
 
-        <i-list :list="list" label="常见组件">
+        <i-list label="常见组件">
 
             <!-- <template slot="item" scope="item">
               {{ item.element }}
@@ -92,6 +105,9 @@
             </i-list-item>
         </i-list>
 
+        <h4>列表组件 / List
+            <a href="./doc-cn/i-list.html" class="right">查看文档&gt;</a>
+        </h4>
         <i-list :list="list" label="纯文本列表"></i-list>
 
         <i-list :list="list" label="自定义列表">
@@ -147,6 +163,7 @@
             </i-tab-pane>
             <i-tab-pane :title="foo">{{foo}}</i-tab-pane>
         </i-bottom-nav>
+
     </div>
     <script src="./dist/build.js "></script>
 </body>
