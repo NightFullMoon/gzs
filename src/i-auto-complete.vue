@@ -1,17 +1,19 @@
 <template>
   <div class="i-auto-complete">
-<input type="text" v-model="mValue" @focus="isFocus=true" @blur="isFocus=false">
-    <i-list :list="mSuggest" v-show="mShowList" @click-item="mValue= arguments[0];"></i-list>
+    <input type="text" v-model="mValue" @focus="isFocus=true" @blur="isFocus=false">
+<slot :list="mSuggest">
+      <i-list :list="mSuggest" v-show="mShowList" @click-item="mValue= arguments[0];"></i-list>
+</slot>
   </div>
 </template>
 
 <script>
 // 这个组件是一个高阶的组件，顺带演示了如何组合两个已有的组件
 /* 
-  √ 1，先开发出匹配本地数据的
-  √ 2、然后是匹配function的
-  最后是匹配远程数据（异步）的
-*/
+    √ 1，先开发出匹配本地数据的
+    √ 2、然后是匹配function的
+    最后是匹配远程数据（异步）的
+  */
 import iList from "./i-list/i-list.vue";
 import utils from "./utils.js";
 

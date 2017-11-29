@@ -1,8 +1,9 @@
 <template>
   <div>
     <h5 class="list-title" v-if="label">{{label}}</h5>
-    <ul class="list">
 
+    <ul class="list">
+<slot>
       <li v-for="(item ,index) in list" :key="index" @mousedown="onItemClick($event,item,index)">
         <!-- ,clickable:(item.href || item.action) -->
         <slot name="item" :item="item" :index="index">
@@ -10,8 +11,9 @@
             <i v-if="item.icon" class="fa" :class="item.icon" aria-hidden="true"></i>{{item.label || item}}</a>
         </slot>
       </li>
-
+</slot>
     </ul>
+
   </div>
 </template>
 
