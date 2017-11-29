@@ -8,11 +8,16 @@ Vue.use(gzs);
 
 new Vue({
     el: '#app',
-    components: { testC },
+    components: {
+        testC
+    },
     data: {
         sw: true,
         foo: "aaa",
         list: [1, 2, 3, {
+            label: "link",
+            href: "/a.html",
+            disabled: true,
             aaa: 1
         }],
 
@@ -72,7 +77,14 @@ new Vue({
         },
         onAutoComplete: function (keyword) {
             console.log(keyword);
-            return ['aaa', 'bbb'];
+            // return ['aaa', 'bbb'];
+
+            return new Promise(function (resolve) {
+                console.log("new promise")
+                setTimeout(function () {
+                    resolve([keyword + 1, keyword + 2, keyword + 3]);
+                }, 3000);
+            })
         }
     },
     mounted: function () {

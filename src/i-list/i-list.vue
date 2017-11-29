@@ -3,15 +3,15 @@
     <h5 class="list-title" v-if="label">{{label}}</h5>
 
     <ul class="list">
-<slot>
-      <li v-for="(item ,index) in list" :key="index" @mousedown="onItemClick($event,item,index)">
-        <!-- ,clickable:(item.href || item.action) -->
-        <slot name="item" :item="item" :index="index">
-          <a :href="item.href" class="list-item clickable" :class="{disabled:item.disabled}">
-            <i v-if="item.icon" class="fa" :class="item.icon" aria-hidden="true"></i>{{item.label || item}}</a>
-        </slot>
-      </li>
-</slot>
+      <slot>
+        <li v-for="(item ,index) in list" :key="index" @mousedown="onItemClick($event,item,index)">
+          <!-- ,clickable:(item.href || item.action) -->
+          <slot name="item" :item="item" :index="index">
+            <a :href="item.href" class="list-item clickable" @click="onLinkClick($event,item.disabled)" :class="{disabled:item.disabled}">
+              <i v-if="item.icon" class="fa" :class="item.icon" aria-hidden="true"></i>{{item.label || item}}</a>
+          </slot>
+        </li>
+      </slot>
     </ul>
 
   </div>
@@ -20,23 +20,23 @@
 <script>
 // TODO:这个组件，如果想要单独实现每个item的控制，需要实现tab组件那样的功能，既将slot内特殊的子组件渲染出来
 /* 
-      // 两种用法：
-          常规用法：
-              <i-list :list="list"></i-list>
+          // 两种用法：
+              常规用法：
+                  <i-list :list="list"></i-list>
 
-          list数组中，item的定义：
-          item本身是字符串：
+              list数组中，item的定义：
+              item本身是字符串：
 
 
-          自定义渲染item方式
-          item.element是原对象，item.index是下标
-              <i-list :list="list">
-                  <template slot="item" scope="item">
-                    {{ item.element }}
-                  </template>
-              </i-list>
+              自定义渲染item方式
+              item.element是原对象，item.index是下标
+                  <i-list :list="list">
+                      <template slot="item" scope="item">
+                        {{ item.element }}
+                      </template>
+                  </i-list>
 
-      */
+          */
 
 // todo:如果这个item不包含callback和href，则不添加可点击类
 import iListItem from "./i-list-item.vue";
@@ -58,10 +58,9 @@ export default {
     iListItem
   },
   methods: {
-    // fixme:由于由click事件改成了mousedown事件，导致了处于disabled状态的项依然会产生跳转
     onItemClick: function(event, item, index) {
       if (item.disabled) {
-        event.preventDefault();
+        // event.preventDefault();
         return;
       }
       if (item.action) {
@@ -70,6 +69,11 @@ export default {
       }
 
       this.$emit("click-item", item, index);
+    },
+    onLinkClick: function(event, isDisabled) {
+      if (isDisabled) {
+        event.preventDefault();
+      }
     }
   }
 };

@@ -35,17 +35,20 @@
 
         <!-- <i-notice :show.sync="showNotice"></i-notice> -->
         {{text2}}
+
         <!-- <i-auto-complete :data="onAutoComplete" v-model="text2"></i-auto-complete> -->
         <i-auto-complete :data="['item1','item2']" v-model="text2">
-            <div slot-scope="a">
-
-
-                <a href="###">{{a.list}}111</a>
-                <i-list :list="a.list">
+            <template slot-scope="a">
+                {{a}}
+                <i-list :list="a.list" @click-item="text2=arguments[1]">
                     <a href="###" slot="item" slot-scope="bbb">{{bbb}}</a>
                 </i-list>
-            </div>
+            </template>
         </i-auto-complete>
+
+        <!-- <i-auto-complete :data="onAutoComplete" v-model="text2"></i-auto-complete> -->
+        <!-- <i-auto-complete :data="['item1','item2']" v-model="text2"></i-auto-complete> -->
+
         <h4>按钮 / Button
             <a href="./doc-cn/i-button.html" class="right">查看文档&gt;</a>
         </h4>
