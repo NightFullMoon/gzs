@@ -85,6 +85,9 @@ new Vue({
                     resolve([keyword + 1, keyword + 2, keyword + 3]);
                 }, 3000);
             })
+        },
+        onAutoComplete2: function (keyword) {
+            return [keyword + new Date(), keyword + "2" + new Date()];
         }
     },
     mounted: function () {
