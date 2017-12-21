@@ -94,13 +94,17 @@ new Vue({
         var that = this;
 
         // this.$notice();
-        this.$alert("只有标题标题标题")
-        /* this.$alert({
+        // this.$alert("只有标题标题标题");
+        this.$alert({
             title: "标题",
-            buttons_: [{
+            onClose: function () {
+                console.log("接收到关闭事件");
+            },
+            buttons: [{
                 label: "确定2",
                 action: function () {
                     console.log("点击了确定2");
+                    return false;
                 }
             }, {
                 label: "取消",
@@ -111,7 +115,7 @@ new Vue({
                     this.close();
                 }
             }]
-        }); */
+        });
 
         setTimeout(function () {
             that.foo = "bbb";

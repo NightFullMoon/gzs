@@ -31,10 +31,6 @@ import iButton from "../i-button.vue"
 
 
 var Alert = function (arg) {
-    // 弹窗的默认参数
-    const DEFAULT = {
-        buttons: []
-    }
 
     // 根据按钮的参数和 createElement 函数，返回创建好的buttons对象，直接放置到render函数中去使用
     // 属于内部函数
@@ -65,6 +61,11 @@ var Alert = function (arg) {
         data: {
             show: true,
         },
+        watch: {
+            show: function () {
+                arg.onClose && arg.onClose();
+            }
+        },
         render: function (createElement) {
             console.log("i-dialog");
             let that = this;
@@ -76,6 +77,7 @@ var Alert = function (arg) {
             }
 
             return createElement(iDialog, {
+                class: [].concat(arg.className),
                 props: {
                     title: title,
                     content: arg.content || "",
