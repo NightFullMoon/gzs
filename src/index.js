@@ -94,6 +94,24 @@ new Vue({
         var that = this;
 
         // this.$notice();
+        this.$alert("只有标题标题标题")
+        /* this.$alert({
+            title: "标题",
+            buttons_: [{
+                label: "确定2",
+                action: function () {
+                    console.log("点击了确定2");
+                }
+            }, {
+                label: "取消",
+                className: ["a", "b"],
+                action: function () {
+                    console.log("点击了取消");
+                    console.log(this);
+                    this.close();
+                }
+            }]
+        }); */
 
         setTimeout(function () {
             that.foo = "bbb";

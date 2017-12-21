@@ -21,10 +21,11 @@ import iMenu from './i-menu.vue'
 import iSelect from './i-select.vue'
 
 import iBottomMenu from './i-bottom-menu.vue'
-import iDialog from './i-dialog.vue'
+// import iDialog from './i-dialog.vue'
 
 import iBottomNav from './i-bottom-nav.vue'
 import notice from './i-notice/'
+import alert from './i-alert/'
 
 import iAutoComplete from "./i-auto-complete.vue"
 
@@ -42,7 +43,7 @@ let gzs = {
     iMenu,
     iSelect,
     iBottomMenu,
-    iDialog,
+    // iDialog,
     iBottomNav,
     // iNotice
     iAutoComplete
@@ -57,6 +58,7 @@ const install = function (Vue, opts = {}) {
     }
 
     Vue.prototype.$notice = notice;
+    Vue.prototype.$alert = alert;
 };
 
 // 直接引用脚本的情况,要是Vue存在就直接注册给Vue
