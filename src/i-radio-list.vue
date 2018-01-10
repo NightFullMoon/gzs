@@ -1,23 +1,19 @@
 <template>
 
+  <div>
+    <h5 class="list-title" v-if="label">{{label}}</h5>
+    <ul class="list">
+      <li v-for="(item ,index) in list" :key="index" class="full-container list-item" @click="change(index)">
+        <slot name="item" :item="item" :index="index" :active-index="activeIndex">
 
-    <div>
-        <h5 class="list-title" v-if="label">{{label}}</h5>
-        <ul class="list">
-
-
-             <li v-for="(item ,index) in list" class="full-container" @click="change(index)">
-            <slot name="item" :item="item" :index="index" :active-index="activeIndex">
-           
-             <p class="auto">{{item.label || item}} </p>
-            <div class="const">
-                <div class="icon-yes" v-show="activeIndex === index"></div>
-            </div>
-            
-            </slot>
-         </li>
-        </ul>
-    </div>
+          <p class="auto">{{item.label || item}} </p>
+          <div class="const">
+            <div class="icon-yes" v-show="activeIndex === index"></div>
+          </div>
+        </slot>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -38,7 +34,7 @@ export default {
   },
   methods: {
     change: function(index) {
-    //   console.log("change!" +index);
+      //   console.log("change!" +index);
       this.activeIndex = index;
     }
   }

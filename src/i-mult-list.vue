@@ -5,7 +5,7 @@
             <p class="auto">{{item.label || item}} </p>
             <div class="const">
                 <!-- <div class="icon-yes" v-show="activeIndex === index"></div> -->
-                <input type="checkbox" class="yes" :checked="actives[index]"></input>
+                <input type="checkbox" class="yes" :checked="actives[index]"/>
             </div>
         </i-list-item>
     </i-list>
