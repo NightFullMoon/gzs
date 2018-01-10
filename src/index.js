@@ -40,7 +40,7 @@ new Vue({
             // item完整的属性：
             {
                 label: "测试的item",
-                action: function () {
+                action: function() {
                     alert("可以自定义回调函数");
                 },
                 href: "###",
@@ -55,7 +55,7 @@ new Vue({
         dialogSecondary: {
             label: "取消",
             // class: ["primary"],
-            callback: function () {}
+            callback: function() {}
         },
         selectText: "",
 
@@ -63,10 +63,10 @@ new Vue({
         text2: ""
     },
     watch: {
-        sw: function () {
+        sw: function() {
             console.log("sw change!:" + this.sw);
         },
-        isShowMenu: function () {
+        isShowMenu: function() {
             console.log("isShowMenu change!:" + this.isShowMenu);
         }
     },
@@ -75,51 +75,52 @@ new Vue({
             // con'.log()
             console.log(log);
         },
-        onAutoComplete: function (keyword) {
+        onAutoComplete: function(keyword) {
             console.log(keyword);
             // return ['aaa', 'bbb'];
 
-            return new Promise(function (resolve) {
+            return new Promise(function(resolve) {
                 console.log("new promise")
-                setTimeout(function () {
+                setTimeout(function() {
                     resolve([keyword + 1, keyword + 2, keyword + 3]);
                 }, 3000);
             })
         },
-        onAutoComplete2: function (keyword) {
+        onAutoComplete2: function(keyword) {
             return [keyword + new Date(), keyword + "2" + new Date()];
         }
     },
-    mounted: function () {
-        var that = this;
+    mounted: function() {
+            var that = this;
 
-        // this.$notice();
-        // this.$alert("只有标题标题标题");
-        this.$alert({
-            title: "标题",
-            onClose: function () {
-                console.log("接收到关闭事件");
-            },
-            buttons: [{
-                label: "确定2",
-                action: function () {
-                    console.log("点击了确定2");
-                    return false;
-                }
-            }, {
-                label: "取消",
-                className: ["a", "b"],
-                action: function () {
-                    console.log("点击了取消");
-                    console.log(this);
-                    this.close();
-                }
-            }]
-        });
-
-        setTimeout(function () {
-            that.foo = "bbb";
-        }, 3000);
-    }
-    // render: h => h(App)
+            // this.$notice();
+            // this.$alert("只有标题标题标题");
+            /*
+            this.$alert({
+                title: "标题",
+                onClose: function () {
+                    console.log("接收到关闭事件");
+                },
+                buttons: [{
+                    label: "确定2",
+                    action: function () {
+                        console.log("点击了确定2");
+                        return false;
+                    }
+                }, {
+                    label: "取消",
+                    className: ["a", "b"],
+                    action: function () {
+                        console.log("点击了取消");
+                        console.log(this);
+                        this.close();
+                    }
+                }]
+            });
+            */
+            setTimeout(function() {
+                that.foo = "bbb";
+            }, 3000);
+        }
+        // render: h => h(App)
 });
