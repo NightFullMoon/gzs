@@ -1,7 +1,7 @@
 <template>
-    <button href="###" class="button" :class="{disabled:mDisabled}" @click="!mDisabled && $emit('click')">
+    <a href="###" class="gzs-button button" :class="{disabled:mDisabled}" @click="!mDisabled && $emit('click')">
         <slot></slot>
-    </button>
+    </a>
 </template>
 
 <script>
@@ -122,9 +122,7 @@ export default {
   &.radius {
     .radius-container();
   }
-
-
-
+  
   &.disabled:hover {
     cursor: not-allowed;
   }
