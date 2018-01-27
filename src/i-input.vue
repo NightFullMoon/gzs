@@ -1,5 +1,5 @@
 <template>
-    <input class="gzs-input" type="text" :placeholder="placeholder" v-model="mValue"/>
+  <input class="gzs-input" type="text" :placeholder="placeholder" v-model="mValue" />
 </template>
 
 <script>
@@ -64,6 +64,8 @@ input[type="password"].gzs-input {
   }
 }
 
+/* 1.先搞定圆角继承的问题 */
+/*2.再统一边框的颜色*/
 /*按钮组的样式*/
 .input-group {
   .full-container;
@@ -74,21 +76,45 @@ input[type="password"].gzs-input {
   .button,
   .gzs-button {
     margin: 0px;
-    border-radius: inherit;
+    // border-radius: inherit;
+    // 写在这里，不然权重不够
+    border-radius: 0px;
+    margin-left: -1px;
+    &:first-child {
+      border-top-left-radius: inherit;
+      border-bottom-left-radius: inherit;
+      margin-left: 0px;
+    }
+
+    &:last-child {
+      border-top-right-radius: inherit;
+      border-bottom-right-radius: inherit;
+    }
+
+    & + input[type="text"].gzs-input,
+    & + input[type="password"].gzs-input,
+    & + .gzs-button {
+      border-left-color: transparent;
+    }
   }
+
+  // >input[type="text"].gzs-input + .gzs-button,
+  // input[type="password"].gzs-input + .gzs-button{
+  //   border-left-color: transparent;
+  // }
 
   > input[type="text"].gzs-input,
   input[type="password"].gzs-input {
     .auto;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    // border-top-right-radius: 0px;
+    // border-bottom-right-radius: 0px;
   }
-  .button,
+
   .gzs-button {
     .const;
 
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+    // border-top-left-radius: 0px;
+    // border-bottom-left-radius: 0px;
   }
 }
 </style>
