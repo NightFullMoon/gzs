@@ -86,6 +86,7 @@ export default {
 
   border: 1px solid transparent;
   border-color: @normal;
+  // z-index: 1;
 
   &:hover,
   &.hover {
@@ -96,13 +97,13 @@ export default {
   &:active,
   &.active {
     color: @active;
-    border-color: @active;
+    border-color: @active !important;
   }
 
   &:disabled,
   &.disabled {
-    color: @disabled;
-    border-color: @disabled;
+    color: @disabled;    
+    border-color: @disabled !important;
   }
 }
 
@@ -118,6 +119,11 @@ export default {
   text-align: center;
   cursor: pointer;
   outline: none;
+  position: relative;
+  &:hover,
+  &.hover{
+    z-index: 2;
+  }
 
   &.radius {
     .radius-container();
@@ -127,7 +133,7 @@ export default {
     cursor: not-allowed;
   }
 
-  .Button-color-line(#ccc,#666);
+  .Button-color-line(#ccc,#333);
   //   .round;
 
   &.primary {
@@ -146,5 +152,26 @@ export default {
 
 .button.test {
   .Button-color-line(rgb(249, 38, 114));
+}
+
+/*按钮组*/
+.btn-group{
+  .radius-container;
+  display: table;
+  >.gzs-button{
+    margin: 0px;
+    margin-left:-1px;
+    float: left;
+    border-radius: 0px;
+    &:first-child{
+      border-top-left-radius: inherit;
+      border-bottom-left-radius: inherit;
+    }
+    &:last-child{
+      border-top-right-radius: inherit;
+      border-bottom-right-radius: inherit;
+    }
+
+  }
 }
 </style>
