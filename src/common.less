@@ -5,6 +5,7 @@
 @theme-color :#3485ff;
 // 常规情况下控件高度
 @regular-size:36px;
+@regular-text-size:16px;
 
 
 body{
@@ -18,7 +19,8 @@ p{
 // 常规文本
 .regular-text{
     line-height: 24px;
-    font-size: @regular-size/2;  
+    // font-size: @regular-size/2;  
+    font-size: @regular-text-size;
     color: #333;
 }
 
@@ -49,13 +51,20 @@ p{
 // 自动宽度的组件
 .full-container{
     display: table;
-    .const{  width: 1%;
+    .const{
+        width: 1%;
       
         display: table-cell;
-        padding: 0px 8px;
+       
         vertical-align: middle;
         // ↓如果是文本的话，防止文本被断开
         word-break: keep-all;
+
+    }
+
+    // 这个规则调整为仅有容器时有效，避免元素直接作为table-cell时候，padding被覆盖
+    div.const{
+        padding: 0px 8px;
         &+.const{
             // ↓形成类似flex的效果
             padding-left: 0px;

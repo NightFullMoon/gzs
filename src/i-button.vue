@@ -1,14 +1,14 @@
 <template>
-    <a href="###" class="gzs-button button" :class="{disabled:mDisabled}" @click="!mDisabled && $emit('click')">
-        <slot></slot>
-    </a>
+  <a href="###" class="gzs-button button" :class="{disabled:mDisabled}" @click="!mDisabled && $emit('click')">
+    <slot></slot>
+  </a>
 </template>
 
 <script>
 export default {
   name: "i-button",
   //   这块其实应该让生成器来生成才对，注释应该只写上说明
-  
+
   /**@type {Object} props
    * @property {Boolean|String} [disabled=false] - 是否要禁用此按钮，如果设置为`true` 或者`"disabled"`,或者`"true"`，则该按钮会被禁用。禁用状态下，`click`事件不会被触发。但是`click.native`事件不受此属性影响
    **/
@@ -39,7 +39,7 @@ export default {
   @inner-height :@height - 2px;
 
   min-height: @height;
-  font-size:  @inner-height/2;
+  font-size: @regular-text-size;
   line-height: @inner-height/2;
   padding: @inner-height/4 @height/2;
   margin: @height/4;
@@ -63,7 +63,7 @@ export default {
   background-color: @normal;
   border: none;
   &:hover,
-  &.hover{
+  &.hover {
     background-color: @hover;
   }
   &:active,
@@ -82,17 +82,17 @@ export default {
 * 创建一个线框风格的button
 */
 .Button-color-line(@normal, @hover:darken(@normal, 10%), @active:darken(@normal, 20%),@disabled:#ccc) {
-  color:  #333;
+  color: #333;
 
   border: 1px solid transparent;
   border-color: @normal;
 
   &:hover,
-  &.hover
-   {
+  &.hover {
     color: @hover;
-    border-color: @hover;
+    border-color: @hover !important;
   }
+  
   &:active,
   &.active {
     color: @active;
@@ -107,9 +107,9 @@ export default {
 }
 
 .button {
-//   .Button(32px);
-  .Button-size(32px);
-    //  .regular-text();
+  //   .Button(32px);
+  .Button-size(@regular-size);
+  //  .regular-text();
   display: inline-block;
   text-decoration: none;
   vertical-align: middle;
@@ -122,7 +122,7 @@ export default {
   &.radius {
     .radius-container();
   }
-  
+
   &.disabled:hover {
     cursor: not-allowed;
   }
