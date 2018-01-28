@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Button / 按钮</title>
-    <link rel="stylesheet" href="../dist/gzs.min.css">
-    <style>
-        #app {
-            max-width: 375px;
-            margin: 0px auto;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Button / 按钮</title>
+        <link rel="stylesheet" href="../dist/gzs.min.css">
+        <style>
+            #app {
+                max-width: 375px;
+                margin: 0px auto;
+            }
+        </style>
+    </head>
 
-<body>
-    <div id="app">
-        <h1>Button / 按钮</h1>
-        <i-button >默认按钮</i-button>
-        <i-button class="primary">主要按钮</i-button>
-        <i-button class="warning">警告按钮</i-button>
+    <body>
+        <div id="app">
+            <h1>Button / 按钮</h1>
+            <i-button>默认按钮</i-button>
+            <i-button class="primary">主要按钮</i-button>
+            <i-button class="warning">警告按钮</i-button>
 
 
-        <i-button class="radius">默认按钮</i-button>
-        <i-button class="primary radius">主要按钮</i-button>
-        <i-button class="warning radius">警告按钮 </i-button>
+            <i-button class="radius">默认按钮</i-button>
+            <i-button class="primary radius">主要按钮</i-button>
+            <i-button class="warning radius">警告按钮 </i-button>
 
-        <i-button :disabled="true" @click="print('自带的点击')" @click.native="print('原生的点击')">禁用按钮1</i-button>
-        <i-button disabled="disabled">禁用按钮2</i-button>
-        <i-button disabled="true">禁用按钮3</i-button>
+            <i-button :disabled="true" @click="print('自带的点击')" @click.native="print('原生的点击')">禁用按钮1</i-button>
+            <i-button disabled="disabled" class="primary">禁用按钮2</i-button>
+            <i-button disabled="true" class="warning">禁用按钮3</i-button>
 
-        <i-button class="xl ">按钮</i-button>
-        <i-button class="xl radius">按钮</i-button>
+            <i-button class="xl ">按钮</i-button>
+            <i-button class="xl radius">按钮</i-button>
 
-        <i-button class="xl primary">按钮</i-button>
-        <i-button class="xl primary radius">按钮</i-button>
+            <i-button class="xl primary">按钮</i-button>
+            <i-button class="xl primary radius">按钮</i-button>
 
-        <i-button class="xl warning">按钮</i-button>
-        <i-button class="xl warning radius">按钮</i-button>
+            <i-button class="xl warning">按钮</i-button>
+            <i-button class="xl warning radius">按钮</i-button>
 
-    </div>
-    <script src="../dist/build.js "></script>
-</body>
+        </div>
+        <script src="../dist/build.js "></script>
+    </body>
 
 </html>

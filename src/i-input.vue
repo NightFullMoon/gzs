@@ -18,7 +18,6 @@ updateValue : 允许用户自定义处理value的过程
 input-group
 
 额。。。这里需要i-button渲染为a标签才能正常使用input-group
-
 */
 
 export default {
@@ -46,17 +45,22 @@ export default {
 
 <style lang="less">
 @import (reference) "common.less";
+
+
 input[type="text"].gzs-input,
 input[type="password"].gzs-input {
   height: @regular-size;
   .radius-container();
-  border: 1px solid @theme-color;
+  .regular-text;
+  border: 1px solid #ccc;
+  // color: #333;
   padding: 0px @regular-size/4;
   box-shadow: none;
   transition: box-shadow 0.3s;
   box-sizing: border-box;
   &:focus {
     outline: none;
+    border-color: @theme-color;
     box-shadow: 0px 0px 8px fade(@theme-color, 50%);
   }
   &.xl {
@@ -64,22 +68,24 @@ input[type="password"].gzs-input {
   }
 }
 
-/* 1.先搞定圆角继承的问题 */
+/*1.先搞定圆角继承的问题 */
 /*2.再统一边框的颜色*/
+
 /*按钮组的样式*/
 .input-group {
   .full-container;
   .radius-container;
 
-  > input[type="text"].gzs-input,
-  input[type="password"].gzs-input,
-  .button,
-  .gzs-button {
+   input[type="text"].gzs-input,
+   input[type="password"].gzs-input,
+   .button,
+   .gzs-button {
     margin: 0px;
     // border-radius: inherit;
     // 写在这里，不然权重不够
     border-radius: 0px;
     margin-left: -1px;
+
     &:first-child {
       border-top-left-radius: inherit;
       border-bottom-left-radius: inherit;
@@ -112,6 +118,13 @@ input[type="password"].gzs-input {
 
   .gzs-button {
     .const;
+    //这里先这样继承自const的padding0，如果那边不用了这边也不用了
+    &:last-child{
+      padding-right: 8px;
+    }
+    &:first-child{
+      padding-left: 8px;
+    }
 
     // border-top-left-radius: 0px;
     // border-bottom-left-radius: 0px;

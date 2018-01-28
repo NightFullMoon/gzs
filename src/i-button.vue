@@ -33,6 +33,7 @@ export default {
 
 <style lang="less" >
 @import (reference) "common.less";
+//todo:将按钮的disabled颜色，改为不是灰色而是浅一点的主色调
 
 .Button-size(@height) {
   @inner-height :@height - 2px;
@@ -57,7 +58,7 @@ export default {
 * @param {Color} normal - 默认情况下按钮的颜色
 * 
 */
-.Button-color-solid(@normal, @hover:darken(@normal, 10%),@active:darken(@normal, 20%), @disabled:#ccc) {
+.Button-color-solid(@normal, @hover:darken(@normal, 10%),@active:darken(@normal, 20%), @disabled:fade(@normal, 30%)) {
   color: white;
   background-color: @normal;
   border: none;
@@ -81,7 +82,7 @@ export default {
 * 创建一个线框风格的button
 */
 .Button-color-line(@normal, @hover:darken(@normal, 10%), @active:darken(@normal, 20%),@disabled:#ccc) {
-  color: @normal;
+  color:  #333;
 
   border: 1px solid transparent;
   border-color: @normal;
@@ -108,7 +109,6 @@ export default {
 .button {
 //   .Button(32px);
   .Button-size(32px);
-
     //  .regular-text();
   display: inline-block;
   text-decoration: none;
@@ -127,7 +127,7 @@ export default {
     cursor: not-allowed;
   }
 
-  .Button-color-line(#666,#333);
+  .Button-color-line(#ccc,#666);
   //   .round;
 
   &.primary {
