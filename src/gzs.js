@@ -29,6 +29,11 @@ import alert from './i-alert/'
 
 import iAutoComplete from "./i-auto-complete.vue"
 
+import iMessage from "./i-message/i-message.vue";
+import message from "./i-message/";
+
+message("这是一个消息提示");
+
 let gzs = {
     iButton,
     iSwitch,
@@ -46,7 +51,8 @@ let gzs = {
     // iDialog,
     iBottomNav,
     // iNotice
-    iAutoComplete
+    iAutoComplete,
+    iMessage
 }
 
 // Vue.use 需要，

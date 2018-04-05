@@ -1,0 +1,94 @@
+// 该文件用来存放与响应式相关的less代码
+
+/*尺寸相关的：*/
+/* xs | sm | md | lg*/
+@screen-lg: 1280px;
+@screen-md-max: @screen-lg - 1;
+@screen-md: 960px;
+
+@screen-sm-max : @screen-md - 1;
+@screen-sm: 640px;
+
+@screen-xs-max: @screen-sm - 1;
+
+/*  注：
+    lg的范围是 1280 <= 1280
+    md的范围是 960  <= md   < 1279
+    sm的范围是 640  <= sm   < 959
+    xs的范围是 xs   <= 640
+
+    这里的4个函数，用来辅助各自屏幕下的样式，举例来说，
+    p{
+        color:black;
+        .On-lg({
+            color:red;
+        });
+    }
+    那么p标签在lg的屏幕下文本会呈现红色，其他则呈现黑色，关于less传递规则的用法，可以参考(英文)：http://lesscss.cn/features/#detached-rulesets-feature
+*/
+
+// 在 lg 尺寸下的表现
+.On-lg(@rule) {
+    @media (min-width: @screen-lg) {
+        @rule();
+    }
+}
+
+// 在 md 尺寸下的表现
+.On-md(@rule) {
+    @media (min-width: @screen-md) and (max-width: @screen-md-max) {
+        @rule();
+    }
+}
+
+// 在 sm 尺寸下的表现
+.On-sm(@rule) {
+    @media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
+        @rule();
+    }
+}
+
+// 在xs尺寸下的表现
+.On-xs(@rule) {
+    @media(max-width: @screen-xs-max) {
+        @rule();
+    }
+}
+
+// 大于 lg 尺寸时候的表现
+.Small-then-lg(@rule) {
+    @media(max-width:@screen-md-max) {
+        @rule();
+    }
+}
+
+// 小于 md 尺寸时候的表现
+.Small-then-md(@rule) {
+    @media (max-width: @screen-sm-max) {
+        @rule();
+    }
+}
+
+// 小于 sm 尺寸时候的表现
+.Small-then-sm(@rule){
+    .On-xs(@rule);
+};
+
+// 大于 md 尺寸时候的表现
+.Bigger-then-md(@rule){
+    .On-lg(@rule);
+} 
+
+// 大于 sm 尺寸时候的表现
+.Bigger-then-sm(@rule) {
+    @media(min-width: @screen-md) {
+        @rule();
+    }
+}
+
+// 大于 xs 时候尺寸的表现
+.Bigger-then-xs(@rule){
+     @media(min-width: @screen-sm) {
+        @rule();
+    }
+}

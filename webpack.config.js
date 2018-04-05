@@ -55,7 +55,9 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            "screen.less":path.resolve(__dirname, './src/screen.less'),
+
         }
     },
     devServer: {
