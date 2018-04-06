@@ -3,7 +3,7 @@ import iNotice from './i-notice.vue'
 
 
 
-
+// todo:这个目前还无法传递其他参数
 // 这个是直接调用的函数
 // 调用示例：notice("标题");
 // notice("标题","内容");
