@@ -183,7 +183,6 @@
   };
 </script>
 <style lang="less">
-  
   @import (reference) "../common.less";
 
   @pc-width: 320px;
@@ -250,6 +249,12 @@
   .slide-leave-to {
     top: -80px;
   }
+
+  .slide-leave-active,
+  .slide-enter-active {
+    transition: top .3s;
+  }
+
 
   @media (min-width: 640px) {
     @distance: 8px; // 右上 
