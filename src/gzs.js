@@ -32,7 +32,7 @@ import iAutoComplete from "./i-auto-complete.vue"
 import iMessage from "./i-message/i-message.vue";
 import message from "./i-message/";
 
-message("这是一个消息提示");
+// message("这是一个消息提示");
 
 let gzs = {
     iButton,
@@ -65,6 +65,7 @@ const install = function (Vue, opts = {}) {
 
     Vue.prototype.$notice = notice;
     Vue.prototype.$alert = alert;
+    Vue.prototype.$msg = message;
 };
 
 // 直接引用脚本的情况,要是Vue存在就直接注册给Vue

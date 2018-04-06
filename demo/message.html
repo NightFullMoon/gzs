@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Message / 消息提示</title>
+    <link rel="stylesheet" href="../dist/gzs.min.css">
+    <style>
+        #app {
+            max-width: 375px;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Message / 消息提示</h1>
+        <i-input v-model="msg" placeholder="请输入要提示的内容"></i-input>
+        <i-button @click="showMessage">弹出提示</i-button>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+    <script src="../dist/gzs.js"></script>
+    <script>
+        Vue.use(gzs);
+        new Vue({
+            el: "#app",
+            data: {
+                msg: ""
+            },
+            methods: {
+                showMessage: function () {
+                    this.$msg(this.msg);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
