@@ -84,7 +84,7 @@
           item.action(item, index);
           // return;
         }
-
+  
         this.$emit("click-item", item, index);
       },
       onLinkClick: function (event, isDisabled) {

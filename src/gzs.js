@@ -17,7 +17,7 @@ import iTabPane from './i-tabs/i-tab-pane.vue'
 
 import iRadio from './i-radio.vue'
 
-import iMenu from './i-menu.vue'
+// import iMenu from './i-menu.vue'
 import iSelect from './i-select.vue'
 
 import iBottomMenu from './i-bottom-menu.vue'
@@ -45,7 +45,7 @@ let gzs = {
     iTabs,
     iTabPane,
     iRadio,
-    iMenu,
+    // iMenu,
     iSelect,
     iBottomMenu,
     // iDialog,
