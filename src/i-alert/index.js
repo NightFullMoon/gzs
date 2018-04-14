@@ -43,7 +43,7 @@ import iButton from "../i-button.vue"
  * @param {String} [arg.content = ""] - 弹窗的内容
  * @param {String[]} [arg.className = []] - String数组，该数组中所有的元素都会被作为css类名添加到组件最外层的元素上，可以借此来自定义主题或者覆盖掉默认样式
  * @param {Function} [arg.onClose = function(){}] - 当弹窗被关闭时，调用的回调函数
- * @param {buttonObject[]} [arg.buttons=[{label:"确定",className:["radius","primary"]}]] - button对象数组，该数组中所有的元素都将会被转换成button元素添加到弹窗。如果不指定这个值，默认情况下会存在一个“确定”按钮
+ * @param {buttonObject[]} [arg.buttons=[{label:"确定",className:["radius","primary"]}] - button对象数组，该数组中所有的元素都将会被转换成button元素添加到弹窗。如果不指定这个值，默认情况下会存在一个“确定”按钮
  */
 
 var Alert = function (arg) {
