@@ -25,6 +25,8 @@
             let that = this;
             this.show = true;
             let timeout = 1 < Number(this.timeout) ? this.timeout : 1;
+
+            console.log(this.timeout);
             setTimeout(() => {
                 that.show = false;
             }, timeout);

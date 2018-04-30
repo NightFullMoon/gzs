@@ -18,11 +18,18 @@ var fileLoaderOption = {
 };
 
 module.exports = {
-    entry: './src/index.js',
+    // entry: './src/index.js',
+    entry:{
+        build:"./src/index.js",
+        gzs:"./src/gzs.js"
+    },
+
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: IS_BUILD?"":'/dist/',
-        filename: 'build.js'
+        filename: '[name].js',
+        library: "[name]",
+        libraryTarget: 'umd'
     },
     module: {
         rules: [{

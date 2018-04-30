@@ -1,11 +1,13 @@
 import Vue from "vue";
 import iMessage from "./i-message.vue";
 
-function message(msg) {
+function message(msg, options = {}) {
 
     let vueObject = new Vue({
         render: function (createElement) {
-            return createElement(iMessage, msg);
+            return createElement(iMessage, {
+                props:options
+            },msg);
         }
     });
 
