@@ -1,7 +1,7 @@
 <template>
   <transition :name="transitionName">
-    <div class="notice full-container top-right" :class="{draging:isDraging}" @touchstart="onTouchStart" @touchmove="onMove"
-      @touchend="onTouchEnd" :style="style" v-show="show">
+    <div class="notice full-container " :class="[isDraging?'draging':'' ,position ]" @touchstart="onTouchStart" @touchmove="onMove"
+      @touchend="onTouchEnd" :style="style" v-if="show">
       <!-- 注：透明渐变的效果：;opacity: '+(1-leavePercent)*1.2 +';  -->
       <!-- todo：这个图标先不显示，还没想好怎么处理 -->
       <div class="const hidden">
@@ -24,6 +24,7 @@
 
 <script>
   /** 组件TODO: 2、当鼠标hover到通知上时，不隐藏 
+   * TODO:手机端时向左滑动时候隐藏的功能
    */
 
   import screen from "../screen.js";
@@ -35,10 +36,10 @@
         type: Boolean,
         default: false
       },
-      // 关闭的秒数，设置为0表示禁用
-      closeSecond: {
+      // 关闭的秒数(单位为毫秒)，设置为0表示禁用
+      timeout: {
         type: Number,
-        default: 3
+        default: 3000
       },
 
       // 标题
@@ -52,6 +53,7 @@
         type: String,
         default: ""
       },
+
       // 弹窗出现的位置，（仅在pc上有效果）可选值有"top-right","bottom-right","bottom-left","top-left"
       position: {
         type: String,
@@ -116,7 +118,8 @@
     },
     watch: {
       show: function () {
-        if (this.closeSecond < 1) {
+        // 如果是小于1，则不开启自动关闭的功能
+        if (this.timeout < 1) {
           return;
         }
 
@@ -137,7 +140,7 @@
         var that = this;
         this.timer = setInterval(function () {
           that.$emit("update:show", false);
-        }, this.closeSecond * 1000);
+        }, this.timeout);
       },
 
 
